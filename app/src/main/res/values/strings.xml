@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Flower</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">Open Navigation</string>
+    <string name="close">Close Navigation</string>
+    <string name="enter_password">Enter Password..</string>
+    <string name="flower_recognition_app">Flower Recognition App</string>
+
+
+    <string name="sunflower">The common sunflower is valuable from an economic as well as from an ornamental point of view.
+            The leaves are used as fodder, the flowers yield a yellow dye, and the seeds contain oil and are used for food.
+            The sweet yellow oil obtained by compression of the seeds is considered equal to olive or almond oil for table use.
+            Sunflower oil cake is used for stock and poultry feeding.
+        </string>
+
+    <string name="hibiscus">The Hibiscus flowers are showy and conspicuous. It is usually borne singly but sometimes can be seen
+            in clusters. The flowers are trumpet shaped and range in colours of red, orange, yellow, pink or purple.
+            There are five or more petals in a Hibiscus flower..</string>
+
+    <string name="lily">The lily is a genus of flowering plant. There are many species of lilies,
+            like trumpet lilies and tiger lilies. They are usually quite tall, and are perennials.
+            Most lilies grow from a bulb, which in some species develops into a rhizome, which carries small bulbs.
+        </string>
+
+    <string name="Rose">Roses are native primarily to the temperate regions of the Northern Hemisphere.
+            Many roses are cultivated for their beautiful flowers, which range in colour from white through
+            various tones of yellow and pink to dark crimson and maroon, and most have a delightful fragrance,
+            which varies according to the variety and to climatic conditions.</string>
+
+    <string name="recyclerview">RecyclerView is the ViewGroup that contains the views corresponding to your data.
+        Its a view itself so you add RecyclerView into your layout the way you would add any other UI element.
+        Each individual element in the list is defined by a view holder object.
+        RecyclerView is a ViewGroup added to the android studio as a successor of the GridView and ListView.
+        It is an improvement on both of them and can be found in the latest v-7 support packages.
+        It has been created to make possible construction of any lists with XML layouts as an item
+        which can be customized vastly while improving on the efficiency of ListViews and GridViews.
+    </string>
+
+</resources>

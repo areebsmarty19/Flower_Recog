@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:title="About us"
+        android:icon="@drawable/baseline_person_24" />
+
+    <item
+        android:id="@+id/shareFragment"
+        android:title="Share"
+        android:icon="@drawable/baseline_share_24" />
+    <item
+        android:id="@+id/privacyFragment"
+        android:title="Privacy"
+        android:icon="@drawable/baseline_privacy_tip_24" />
+</menu>

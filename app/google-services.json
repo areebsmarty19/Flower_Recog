@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830795013002",
+    "project_id": "flower-recognition-app-5a928",
+    "storage_bucket": "flower-recognition-app-5a928.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830795013002:android:47125373a5c34d45f88673",
+        "android_client_info": {
+          "package_name": "com.example.flower"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6izdpqWatX_xoNeYg52xYoMfXBe7DWdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
