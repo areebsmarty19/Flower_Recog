@@ -1,7 +1,7 @@
 package com.example.flower;
 
 public class DataClass {
-
+    public String name1;
     private String dataTitle;
     private int dataDesc;
     private String dataLang;
