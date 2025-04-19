@@ -1,150 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#111E2F">
 
-    <ImageView
+    <!-- Background image -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bck1"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#80000000"/>
-    <!-- Back button -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:scaleType="fitXY"
-        android:id="@+id/profbg"
-        android:src="@drawable/topbck" />
+        android:layout_height="0dp"
+        android:layout_weight="4">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="60sp"
-        android:layout_height="60sp"
-        android:scaleType="fitCenter"
-        android:background="@null"
-        android:src="@drawable/back"
-        android:layout_marginTop="16sp"
-        android:layout_marginStart="16sp" />
-
-    <!-- Profile photo -->
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePhoto"
-        android:layout_width="150sp"
-        android:layout_height="150sp"
-        android:src="@drawable/profile1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32sp" />
-
-    <ImageButton
-        android:layout_width="40sp"
-        android:layout_height="40sp"
-        android:id="@+id/btn1"
-        android:layout_below="@id/profilePhoto"
-        android:layout_marginLeft="240sp"
-        android:background="@drawable/camera1"
-        android:scaleType="fitCenter" />
-
-    <!-- Username -->
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text=""
-        android:layout_below="@id/profilePhoto"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40sp" />
-
-    <!-- Email -->
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:text=""
-        android:layout_below="@id/usernameTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8sp" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/emailTextView"
-        android:layout_marginTop="190sp"
-        android:id="@+id/tb1"
-        android:background="@drawable/border"
-        android:layout_marginLeft="16sp"
-        android:layout_marginRight="16sp">
-
-        <!-- Wishlist section -->
-        <TableRow
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tbr1"
-            android:paddingBottom="8sp"
-            android:background="@drawable/goldenbr">
+            android:layout_height="match_parent"
+            android:src="@drawable/bck1"
+            android:scaleType="centerCrop" />
 
-            <ImageView
-                android:layout_width="48sp"
-                android:layout_height="48sp"
-                android:src="@drawable/history"
-                android:scaleType="fitCenter"
-                android:layout_marginRight="16sp"
-                android:layout_gravity="center_vertical" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See Scan History"
-                android:textSize="18sp"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical" />
-
-        </TableRow>
-
-        <!-- Cart section -->
-        <TableRow
+        <!-- Dark overlay -->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tbr2"
-            android:background="@drawable/goldenbr"
-            android:paddingTop="8sp">
+            android:layout_height="match_parent"
+            android:background="#80000000" />
 
-            <ImageView
-                android:layout_width="48sp"
-                android:layout_height="48sp"
-                android:src="@drawable/camera1"
-                android:layout_marginRight="16sp"
-                android:layout_gravity="center_vertical" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scan another flower"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical" />
+        <!-- Top background image -->
 
-        </TableRow>
+        <!-- Back button -->
 
-    </TableLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All rights reserved"
-        android:layout_below="@id/tb1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="190sp" />
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/profbg"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/topbck" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="60sp"
+            android:layout_gravity="start|top"
+            android:layout_marginStart="16sp"
+            android:layout_marginTop="16sp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back" />
+
+        <!-- Profile photo -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePhoto"
+            android:layout_width="188dp"
+            android:layout_height="222dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32sp"
+            android:src="@drawable/profile1" />
+
+        <!-- Camera button -->
+
+        <ImageButton
+            android:id="@+id/btn1"
+            android:layout_width="62dp"
+            android:layout_height="66dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="190sp"
+            android:layout_marginEnd="32sp"
+            android:background="@drawable/camera1"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/usernameTextView"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="436dp"
+            android:layout_marginLeft="100dp"
+            android:text="username"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="500dp"
+            android:layout_marginLeft="100dp"
+            android:text="Email"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+
+</LinearLayout>
