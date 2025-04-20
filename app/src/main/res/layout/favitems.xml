@@ -1,6 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Item 1 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/recognitionImageView1"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/logo2"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/recognitionResultTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/recognitionImageView1"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:text="Detected Flower 1"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!-- Item 2 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/recognitionImageView2"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/logo2"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/recognitionResultTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/recognitionImageView2"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:text="Detected Flower 2"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!-- Item 3 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/recognitionImageView3"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/logo2"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/recognitionResultTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/recognitionImageView3"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"
+                android:text="Detected Flower 3"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!-- Item 4 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/recognitionImageView4"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/logo2"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/recognitionResultTextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_toEndOf="@id/recognitionImageView4"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"
+                android:text="Detected Flower 4"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <!-- Item 5 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/recognitionImageView5"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/logo2"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/recognitionResultTextView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/recognitionImageView5"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:layout_centerVertical="true"
+                android:text="Detected Flower 5"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

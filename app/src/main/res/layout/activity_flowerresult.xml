@@ -6,7 +6,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6679E2"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -16,10 +16,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="268dp"
-            android:layout_height="233dp"
+            android:layout_width="371dp"
+            android:layout_height="311dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/logo2" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,8 +33,8 @@
 
         <TextView
             android:id="@+id/flower_info_textview"
-            android:layout_width="318dp"
-            android:layout_height="385dp"
+            android:layout_width="365dp"
+            android:layout_height="279dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
@@ -47,7 +48,7 @@
             android:layout_marginTop="20dp"
             android:onClick="TakeImage"
             android:text="Photo"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             tools:ignore="OnClick" />
 

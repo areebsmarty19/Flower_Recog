@@ -6,12 +6,12 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.9.1'  // Update to the latest version
+        classpath 'com.android.tools.build:gradle:8.7.3'  // Update to the latest version
     }
 
 }
 plugins {
-    id 'com.android.application' version '8.9.1' apply false
-    id 'com.android.library' version '8.9.1' apply false
+    id 'com.android.application' version '8.7.3' apply false
+    id 'com.android.library' version '8.7.3' apply false
     id 'com.google.gms.google-services' version '4.4.2' apply false
 }

@@ -1,152 +1,116 @@
 package com.example.flower;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.flower.databinding.ActivityProfileBinding;
-import com.example.flower.domain.DatabaseHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class ProfileActivity extends AppCompatActivity {
 
     ActivityProfileBinding binding;
-    DatabaseHelper databaseHelper;
+
     private static final int GALLERY_REQUEST_CODE = 2;
     private static final int CAMERA_PHOTO_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        databaseHelper = new DatabaseHelper(this);
+        // Load username and email (for now static, can be updated)
+        binding.usernameTextView.setText("No Username");
+        binding.emailTextView.setText("example@example.com");
 
-        String username = UsernameOfLoggInUser();
-        String email = EmailOfLoggInUser();
+        // Load profile image from SharedPreferences
+        loadImageFromSharedPreferences();
 
-        // Display the username in the activity_profile layout
-        binding.usernameTextView.setText("" + username);
-        binding.emailTextView.setText("" + email);
+        // Handle the image picker dialog
+        binding.btn1.setOnClickListener(v -> showImagePickerDialog());
 
-        binding.btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showImagePickerDialog();
-            }
-        });
-
-        binding.tbr1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, favitems.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        binding.tbr2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showImagePickerDialog();
-            }
-        });
-        binding.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    private String UsernameOfLoggInUser(){
-        return databaseHelper.getUsernameByIfLoggIn();
-    }
-    private String EmailOfLoggInUser(){
-        return databaseHelper.getEmailByIfLoggIn();
+        // Handle the back button
+        binding.backButton.setOnClickListener(v -> finish());
     }
 
     private void showImagePickerDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose an option");
-        builder.setPositiveButton("Camera", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(takePictureIntent);
-                }
+        builder.setPositiveButton("Camera", (dialog, which) -> {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, CAMERA_PHOTO_REQUEST_CODE);
             }
         });
-        builder.setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                openGallery();
-            }
-        });
+        builder.setNegativeButton("Gallery", (dialog, which) -> openGallery());
         builder.show();
     }
-
 
     private void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
         galleryIntent.setType("image/*");
-        startActivity(galleryIntent);
-    }
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == GALLERY_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, open gallery
-                openGallery();
-            } else {
-                // Permission denied
-                Toast.makeText(this, "Gallery permission denied", Toast.LENGTH_SHORT).show();
-            }
-        }
+        startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA_PHOTO_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (resultCode != RESULT_OK || data == null) return;
+
+        if (requestCode == CAMERA_PHOTO_REQUEST_CODE) {
             Bundle bundle = data.getExtras();
             if (bundle != null) {
                 Bitmap photo = (Bitmap) bundle.get("data");
                 binding.profilePhoto.setImageBitmap(photo);
+                saveImageToSharedPreferences(photo);
             }
-        }
-        if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+        } else if (requestCode == GALLERY_REQUEST_CODE) {
             Uri selectedImage = data.getData();
-            // Use the selected image URI as needed
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                 binding.profilePhoto.setImageBitmap(bitmap);
+                saveImageToSharedPreferences(bitmap);
             } catch (IOException e) {
-                Log.e("MainActivity", "Error fetching bitmap", e);
+                Log.e("ProfileActivity", "Error fetching bitmap", e);
             }
+        }
+    }
+
+    private void saveImageToSharedPreferences(Bitmap bitmap) {
+        SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        String imageBase64 = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+
+        editor.putString("profile_image", imageBase64);
+        editor.apply();
+        Toast.makeText(this, "Image saved", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadImageFromSharedPreferences() {
+        SharedPreferences prefs = getSharedPreferences("UserProfile", MODE_PRIVATE);
+        String imageBase64 = prefs.getString("profile_image", null);
+        if (imageBase64 != null) {
+            byte[] imageBytes = Base64.decode(imageBase64, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            binding.profilePhoto.setImageBitmap(bitmap);
         }
     }
 }
