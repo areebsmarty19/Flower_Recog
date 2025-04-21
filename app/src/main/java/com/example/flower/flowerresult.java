@@ -29,16 +29,21 @@ import com.google.firebase.storage.StorageReference;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import android.widget.Toast;
+
+
 public class flowerresult extends AppCompatActivity {
     private TextView textViewResult;
     private ImageView imageView;
     String imageBase64;
+    private FlowerClassifier flowerClassifier;
 
     private DatabaseHelper databaseHelper;
     StorageReference storageReference;
     LinearProgressIndicator progress;
     Uri image;
     MaterialButton selectimage;
+    Bitmap input_image;
 
 
     private final ActivityResultLauncher<Intent> imagePickerLauncher =
@@ -72,6 +77,12 @@ public class flowerresult extends AppCompatActivity {
         checkPermissions ();
 
         Button btnSelectPhoto = findViewById (R.id.button);
+        // Initialize TensorFlow Lite Model
+        try {
+            flowerClassifier = new FlowerClassifier(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         btnSelectPhoto.setOnClickListener (v -> showPhotoSelectionDialog ());
     }
 
@@ -112,13 +123,19 @@ public class flowerresult extends AppCompatActivity {
         try {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap (this.getContentResolver (), imageUri);
             imageView.setImageBitmap (bitmap);
+            input_image=bitmap;
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(input_image, 224, 224, true);
+            classifyImage(resizedBitmap);
         } catch (IOException e) {
-            textViewResult.setText ("Error: " + e.getMessage ());
+            textViewResult.setText ("Please select an image first.");
         }
     }
 
     private void handleCapturedImage(Bitmap bitmap) {
+
         imageView.setImageBitmap (bitmap);
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
+        classifyImage(resizedBitmap);
     }
 
 
@@ -152,4 +169,9 @@ public class flowerresult extends AppCompatActivity {
         return Base64.encodeToString (byteArray, Base64.DEFAULT);
 
     }
+    private void classifyImage(Bitmap bitmap) {
+        String result = flowerClassifier.classify(bitmap, this); // Pass context
+        textViewResult.setText("Predicted Flower: " + result);
+    }
+
 }
