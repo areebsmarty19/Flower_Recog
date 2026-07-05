@@ -3,24 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bck1"
+        android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"/>
+        android:src="@drawable/bck1" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000"/>
+        android:background="#80000000" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,156 +29,138 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="250dp"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/topbck" />
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="346dp"
+                android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.081"
-                app:srcCompat="@drawable/logo2"
-                android:layout_marginTop="30sp"/>
+                app:srcCompat="@drawable/logo2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="32dp">
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="25dp"
-                android:text="Username"
+                android:text="Email"
                 android:textColor="#ffffff"
-                android:textSize="24sp" />
+                android:textSize="21sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColorHint="@color/black"
-                android:textColor="#000000"
-                app:hintAnimationEnabled="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:textColorHint="#BDBDBD"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:id="@+id/email"
-                    android:hint="Enter Email"
-                    android:textColorHint="@color/black"
-                    android:textSize="20sp"
-                    android:drawableStart="@drawable/baseline_email_24"
-                    android:drawablePadding="20dp"
-                    android:inputType="textEmailAddress"
-                    android:layout_marginStart="25sp"
-                    android:layout_marginEnd="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:background="@drawable/edittext2_background"
-                    android:textColor="#000000" />
+                    android:drawableStart="@drawable/baseline_email_24"
+                    android:drawablePadding="16dp"
+                    android:hint="Enter Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="25dp"
                 android:text="Password"
                 android:textColor="#ffffff"
-                android:textSize="24sp" />
+                android:textSize="21sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textColorHint="#BDBDBD"
+                app:hintEnabled="false"
                 app:passwordToggleEnabled="true"
-                android:textColorHint="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:passwordToggleTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:id="@+id/password"
-                    android:hint="@string/enter_password"
-                    android:textSize="20sp"
-                    android:drawableStart="@drawable/baseline_lock_24"
-                    android:drawablePadding="20dp"
-                    android:inputType="textPassword"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:background="@drawable/edittext2_background"
-                    android:textColor="#000000"/>
-
+                    android:drawableStart="@drawable/baseline_lock_24"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
-
 
             <ProgressBar
                 android:id="@+id/progressBar"
-                android:visibility="gone"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/button_background"
                 android:text="Login"
                 android:textColor="#ffffff"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
                     android:text="NEW USER?"
-                    android:textColor="#807B7B" />
+                    android:textColor="#BDBDBD"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/LoginNow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
                     android:text="SIGN UP"
-                    android:textColor="#12BEEE" />
-
+                    android:textColor="#12BEEE"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

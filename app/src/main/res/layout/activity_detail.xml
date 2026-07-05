@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#F8F9FA"
     tools:context=".DetailActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/detailTitle"
-        android:layout_marginTop="14dp"
-        android:text="Title"
-        android:textSize="24sp"
-        android:layout_gravity="center"
-        android:textColor="@color/lavender"
-        android:layout_marginBottom="12dp"/>
-
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:id="@+id/detailImage"
-        android:padding="8dp"
-        android:layout_gravity="center"
-        android:src="@drawable/list_detail"
-        android:scaleType="centerCrop"/>
-
-    <!-- Horizontal Layout for TextView and ImageView -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:padding="10dp">
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp">
+
+            <ImageView
+                android:id="@+id/detailImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/rose" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/detailTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Description"
-            android:padding="10dp"
-            android:textColor="@color/btn"
-            android:textSize="18sp"
-            android:id="@+id/detailDesc"/>
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Rose"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/detailImage1"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:text="Know More..."
-            android:padding="8dp"
-            android:scaleType="centerCrop"
-             />
-    </LinearLayout>
+            android:id="@+id/detailDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="4dp"
+            android:text="Detailed description of the flower goes here. It provides information about its origin, characteristics, and care instructions."
+            android:textColor="#546E7A"
+            android:textSize="16sp" />
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/knowMoreBtn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:text="Know More..."
+            android:textColor="@color/btn"
+            app:icon="@drawable/backbtn"
+            app:iconGravity="end"
+            app:iconPadding="8dp"
+            android:rotationY="180"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

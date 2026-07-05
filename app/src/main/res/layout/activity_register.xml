@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/bck1"
+        android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"/>
+        android:src="@drawable/bck1" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000"/>
+        android:background="#80000000" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,21 +29,18 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="250sp"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/topbck" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
-                android:layout_height="150sp"
+                android:layout_height="150dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,15 +51,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="32dp">
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="50sp"
-                android:layout_marginEnd="32sp"
                 android:text="Username"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
@@ -67,26 +65,22 @@
             <EditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="8sp"
-                android:layout_marginEnd="32sp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/baseline_person_24"
+                android:drawablePadding="16dp"
                 android:hint="Enter User Name..."
-                android:drawablePadding="20sp"
                 android:inputType="textPersonName"
-                android:paddingStart="20sp"
-                android:textColorHint="#000000"
-                android:textSize="19sp" />
+                android:paddingStart="16dp"
+                android:textColorHint="#757575"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="16sp"
-                android:layout_marginEnd="32sp"
+                android:layout_marginTop="16dp"
                 android:text="Email"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
@@ -94,98 +88,93 @@
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="8sp"
-                android:layout_marginEnd="32sp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/baseline_email_24"
+                android:drawablePadding="16dp"
                 android:hint="Enter Your Email..."
-                android:drawablePadding="20sp"
                 android:inputType="textEmailAddress"
-                android:paddingStart="20sp"
-                android:textColorHint="#000000"
-                android:textSize="19sp" />
+                android:paddingStart="16dp"
+                android:textColorHint="#757575"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="16sp"
-                android:layout_marginEnd="32sp"
+                android:layout_marginTop="16dp"
                 android:text="Password"
                 android:textColor="#ffffff"
                 android:textSize="21sp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="8sp"
-                android:textColorHint="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#BDBDBD"
+                app:hintEnabled="false"
                 app:passwordToggleEnabled="true"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:passwordToggleTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:id="@+id/password"
-                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext2_background"
                     android:drawableStart="@drawable/baseline_lock_24"
-                    android:drawablePadding="20sp"
-                    android:paddingStart="20sp"
-                    android:inputType="textPassword"
-                    android:layout_marginStart="25sp"
-                    android:layout_marginEnd="25sp"
-                    android:textColor="#000000"
+                    android:drawablePadding="16dp"
                     android:hint="Enter Password"
-                    android:background="@drawable/edittext2_background"/>
+                    android:inputType="textPassword"
+                    android:paddingStart="16dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar"
-                android:visibility="gone"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="24sp"
-                android:layout_marginEnd="32sp"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/button_background"
                 android:text="Signup"
                 android:textColor="#ffffff"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20sp"
-                android:gravity="center">
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
                     android:text="EXISTING USER?"
-                    android:textColor="#807B7B" />
+                    android:textColor="#BDBDBD"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/RegisterNow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10sp"
+                    android:layout_marginLeft="8dp"
                     android:text="Login"
-                    android:textColor="#12BEEE" />
+                    android:textColor="#12BEEE"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

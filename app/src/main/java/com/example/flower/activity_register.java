@@ -101,7 +101,8 @@ public class activity_register extends AppCompatActivity {
                                         });
                             }
                         } else {
-                            Toast.makeText(activity_register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            String errorMessage = task.getException() != null ? task.getException().getMessage() : "Authentication failed.";
+                            Toast.makeText(activity_register.this, errorMessage, Toast.LENGTH_LONG).show();
                         }
                     });
         });

@@ -4,6 +4,8 @@
 
     <uses-feature android:name="android.hardware.camera" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,9 +24,6 @@
             android:name=".LoginScreen"
             android:exported="false" />
         <activity
-            android:name=".Login"
-            android:exported="false" />
-        <activity
             android:name=".flowerresult"
             android:exported="false" />
         <activity
@@ -38,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".activity_register"
-            android:exported="false" />
-        <activity
-            android:name=".activity_login"
             android:exported="false" />
         <activity
             android:name=".activity_forget_password"

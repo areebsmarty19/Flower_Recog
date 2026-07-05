@@ -17,12 +17,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.flower.databinding.ActivityProfileBinding;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class ProfileActivity extends AppCompatActivity {
 
     ActivityProfileBinding binding;
+    FirebaseAuth auth;
 
     private static final int GALLERY_REQUEST_CODE = 2;
     private static final int CAMERA_PHOTO_REQUEST_CODE = 1;
@@ -33,9 +37,16 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Load username and email (for now static, can be updated)
-        binding.usernameTextView.setText("No Username");
-        binding.emailTextView.setText("example@example.com");
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user != null) {
+            binding.usernameTextView.setText(user.getDisplayName() != null ? user.getDisplayName() : "No Username");
+            binding.emailTextView.setText(user.getEmail());
+        } else {
+            binding.usernameTextView.setText("Not Logged In");
+            binding.emailTextView.setText("");
+        }
 
         // Load profile image from SharedPreferences
         loadImageFromSharedPreferences();

@@ -90,10 +90,8 @@ public class LoginScreen extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-
-                                    Toast.makeText(LoginScreen.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
+                                    String errorMessage = task.getException() != null ? task.getException().getMessage() : "Authentication failed.";
+                                    Toast.makeText(LoginScreen.this, errorMessage, Toast.LENGTH_LONG).show();
                                 }
 
 

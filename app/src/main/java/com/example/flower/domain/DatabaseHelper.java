@@ -11,7 +11,6 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String TABLE_NAME = "";
     // Database Details
     private static final String DATABASE_NAME = "flowers_db";
     private static final int DATABASE_VERSION = 1;
@@ -172,11 +171,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getUsernameByIfLoggIn() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT " + COLUMN_EMAIL + " FROM " + TABLE_USERS + " WHERE " + COLUMN_LOGGED_IN + " = 1", null);
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_USERNAME + " FROM " + TABLE_USERS + " WHERE " + COLUMN_LOGGED_IN + " = 1", null);
         if (cursor.moveToFirst()) {
-            String email = cursor.getString(0);
+            String username = cursor.getString(0);
             cursor.close();
-            return email;
+            return username;
         }
         cursor.close();
         return null;
@@ -184,11 +183,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getEmailByIfLoggIn() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT " + COLUMN_USERNAME + " FROM " + TABLE_USERS + " WHERE " + COLUMN_LOGGED_IN + " = 1", null);
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_EMAIL + " FROM " + TABLE_USERS + " WHERE " + COLUMN_LOGGED_IN + " = 1", null);
         if (cursor.moveToFirst()) {
-            String username = cursor.getString(0);
+            String email = cursor.getString(0);
             cursor.close();
-            return username;
+            return email;
         }
         cursor.close();
         return null;

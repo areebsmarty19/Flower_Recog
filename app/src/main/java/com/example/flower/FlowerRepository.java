@@ -22,14 +22,14 @@ public class FlowerRepository {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_NAME, name);
         values.put(DatabaseHelper.COLUMN_FEATURES, convertFloatArrayToString(features));
-        db.insert(DatabaseHelper.TABLE_NAME, null, values);
+        db.insert(DatabaseHelper.TABLE_FLOWERS, null, values);
         db.close();
     }
 
     public List<DataClass.FlowerData> getAllFlowers() {
         List<DataClass.FlowerData> flowers = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME, null); // ✅ Fixed SQL query
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_FLOWERS, null); // ✅ Fixed SQL query
 
         if (cursor.moveToFirst()) {
             do {
