@@ -67,7 +67,7 @@ Due to convenience, you can test the fully functional app directly in your web b
 🔽 **Download for Android**
 
 Download the installable APK to test on a physical device:
-👉 *[Insert link to your GitHub Release app-debug.apk here]*
+👉 *https://github.com/areebsmarty19/Flower_Recog/releases/download/v1.0/app-debug.apk*
 
 📁 **Placement Instructions (For Developers)**
 
